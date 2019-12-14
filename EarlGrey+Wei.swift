@@ -38,6 +38,14 @@ extension WEIInteraction {
     
     subscript(index: UInt) -> WEIInteraction { return self.atIndex(index) }
     
+    func wait(for matcher: Matcher, timeout: CFTimeInterval, interval: CFTimeInterval,
+              file: StaticString = #file, line: UInt = #line) -> WEIInteraction {
+        
+        return wait(for: matcher.greyMatcher(), timeout: timeout, interval: interval,
+                    file: file, line: line)
+        
+    }
+    
     func wait(for matcher: WEIMatcher, timeout: CFTimeInterval, interval: CFTimeInterval,
               file: StaticString = #file, line: UInt = #line) -> WEIInteraction {
         
